@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="wrapper">
+        <div class="logo">
+            <img src="http://www.citystars-heliopolis.com.eg/public/images/brand_logo/rkNYnmDFMx-main.jpeg?1506775959531" alt="">
+        </div>
+        <div class="text-center mt-4  mb-3 name">
+            Login 
+        </div>
+        <form    [formGroup] = "loginForm"  (ngSubmit)="onSubmit(loginForm.value)">
+            <div class="form-field d-flex align-items-center">
+                <span class="far fa-user"></span>
+                <input type="text" name="username"  placeholder='username' formControlName="username" >
+               
+            </div>
+            <div *ngIf="f['username'].invalid && (f['username'].touched || isSubmit)" 
+            class="error_message">
+                <div *ngIf="f['username'].errors?.['required']">
+                    Username  is required
+                </div>
+                 
+            </div>
+
+            <div class="form-field d-flex align-items-center">
+                <span class="fas fa-key"></span>
+                <input type="password" name="password"  placeholder='password' formControlName="password">
+
+                 
+            </div>
+             <div *ngIf="f['password'].invalid && (f['password'].touched || isSubmit)" class="error_message">
+                    <div *ngIf="f['password'].errors?.['required']">
+                         Password is required
+                    </div>
+                </div>   
+
+            <!-- <div *ngIf="resMessage.message" class="alert alert-{{ resMessage.type }} my-4 py-2">
+                {{ resMessage.message }}
+            </div> -->
+
+            <button class="btn mt-3">Login</button>
+        </form>
+    </div>
+</div>

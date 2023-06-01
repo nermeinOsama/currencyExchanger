@@ -1,0 +1,14 @@
+
+<div class="row" >
+        <ng-container *ngFor="let item of listHistory">
+            <div class="col-lg-4  col-md-6 col-sm-12 mb-3 ">
+              <div class="card bg-light mb-3" >
+                <div class="card-header">from {{item.from}}</div>
+                <div class="card-body">
+                  <h5 class="card-title">to :{{item.to}}</h5>
+                  <p class="card-text">amount :{{item.amount}}</p>
+                </div>
+              </div>
+             </div>
+         </ng-container>
+</div>

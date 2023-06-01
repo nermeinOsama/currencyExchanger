@@ -1,0 +1,123 @@
+<div class="row w-100 form_calculate">
+  <ng-container *ngIf="detailsFalg">
+    <div class="col-12 my-4">
+      <h3>currency-exchanger</h3>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="!detailsFalg">
+    <div class="col-12 my-4 d-flex justify-content-between">
+      <h3>{{ currenciesFromId }} __ {{ currenciesFormName }}</h3>
+      <button class="btn btn-outline-info" (click)="backButton()">
+        back to home
+      </button>
+    </div>
+  </ng-container>
+
+  <div class="col-12">
+    <div class="row d-flex ">
+      <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+        <label class="text-right header_input"> amount</label>
+        <input
+          type="text"
+          class="w-100 form-control"
+          [(ngModel)]="currencyExchangerModel.amount"
+        />
+      </div>
+
+      <div class="col-lg-3 col-md-5 col-sm-12 mb-3">
+        <label class="text-right header_input">
+          from {{ currenciesFromId }}</label
+        >
+
+        <ng-select
+          class="custom w-100"
+          id="currenciesFromId"
+          name="currenciesFromId"
+          [(ngModel)]="currenciesFromId"
+          [searchable]="true"
+          [items]="listOfAllCurrencies"
+          bindLabel="id"
+          bindValue="id"
+          (change)="onChangeCurrenciesFrom($event)"
+        >
+        </ng-select>
+      </div>
+      <div class="col-lg-2 col-md-6 col-sm-12 mb-3">
+        <label class="text-right header_input hidden"> DetailsPage </label>
+
+          <button (click)="swap()" class="swap-btn">
+        <i class="fas fa-exchange-alt"></i>
+      </button>
+      </div>
+    
+      <div class="col-lg-3 col-md-5 col-sm-12 mb-3">
+        <label class="text-right header_input"> to {{ currenciesToId }}</label>
+
+        <ng-select
+          class="custom w-100"
+          id="currenciesToId"
+          name="currenciesToId"
+          [(ngModel)]="currenciesToId"
+          [searchable]="true"
+          [items]="listOfAllCurrencies"
+          bindLabel="id"
+          bindValue="id"
+          (change)="onChangeCurrenciesTo($event)"
+        >
+        </ng-select>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12 mb-3"></div>
+      <div class="col-lg-8 col-md-12 my-4 ">
+        <button class="btn btn-primary w-100" (click)="submitForm()">
+          Convert
+        </button>
+      </div>
+
+      <div class="col-lg-4 col-md-6 col-sm-12 mb-3 mt-3" *ngIf="responseModel">
+        <label class="text-right header_input"> rate </label>
+
+        <div class="card dimmed">
+          <p>
+            <span>1.00</span>
+            <span class="bold">{{ responseModel.query.from }}</span> ==
+            {{ responseModel.info.rate }}
+            <span class="bold">{{ responseModel.query.to }}</span>
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="col-lg-4 col-md-6 col-sm-12 mb-3 mt-3"
+        *ngIf="responseModel"
+        [ngClass]="{ 'col-lg-8 col-md-12': !detailsFalg }"
+      >
+        <label class="text-right header_input"> result </label>
+        <div class="card dimmed">
+          <p>
+            <span>{{ responseModel.result }}</span>
+            <span class="bold">{{ responseModel.query.to }}</span>
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="col-lg-4 col-md-6 col-sm-12 mb-3 mt-3"
+        *ngIf="responseModel && detailsFalg"
+      >
+        <label class="text-right header_input hidden"> DetailsPage </label>
+        <button
+          class="btn btn-outline-info w-100 p-4"
+          *ngIf="detailsFalg"
+          (click)="DetailsPage()"
+        >
+          Details
+        </button>
+      </div>
+
+      <!-- <div *ngIf="resultMessage" class="alert my-4 py-2 text-center">
+      <span class="bold"> {{ resultMessage.message }}</span>
+    </div> -->
+    </div>
+  </div>
+</div>

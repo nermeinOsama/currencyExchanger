@@ -1,0 +1,15 @@
+<app-view-currency-exchanger
+  (listHistoryrate)="recivetHistoryRate($event)"
+  (modelCurrencyForm)="FormCurrencyMethod($event)"
+  (backBtn)="closeChartPage($event)"
+></app-view-currency-exchanger>
+
+<app-chart-historical-rates 
+  [modelCurrencyForm]="modelCurrencyForm"
+  *ngIf="modelCurrencyForm && showChart"
+></app-chart-historical-rates>
+
+<app-historical-rates
+  [listHistory]="listHistory"
+  *ngIf="listHistory && !showChart"
+></app-historical-rates>
