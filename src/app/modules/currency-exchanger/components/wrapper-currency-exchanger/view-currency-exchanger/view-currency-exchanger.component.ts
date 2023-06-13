@@ -37,7 +37,7 @@ export class ViewCurrencyExchangerComponent implements OnInit {
 
   ngOnInit(): void {
     this.initData();
-    // this.getLookupsOfAllCurrencies();
+    this.getLookupsOfAllCurrencies();
   }
 
   initData() {
