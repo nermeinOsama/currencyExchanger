@@ -1,12 +1,13 @@
 {
   "name": "currency-exchanger",
-  "version": "0.0.0",
+  "version": "0.0.0",  
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts --openssl-legacy-provider build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+    },
   "private": true,
   "dependencies": {
     "@angular/animations": "~12.2.0",
